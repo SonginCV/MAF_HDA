@@ -19,7 +19,7 @@ The arXiv preprint is an extension of the BMTT worshop paper.
 #### Demo examples in KITTI object tracking test 0018 sequence.
 ![public segmentation](GMPHD_MAF/img/KITTI_test-0018_det_256bits.gif)
 
-`▶ Public segmentation results by MaskRCNN`
+`▶ Public segmentation results by MaskRCNN [2]`
 
 ![public segmentation](GMPHD_MAF/img/KITTI_test-0018_trk_256bits.gif)
 
