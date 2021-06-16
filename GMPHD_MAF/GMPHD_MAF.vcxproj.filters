@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{592140ae-8a3a-4b48-a8d8-a73a93617dec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="trackers">
+      <UniqueIdentifier>{bee8740a-0ad5-4e0c-abd4-e30352550857}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="appearance">
+      <UniqueIdentifier>{94162992-2fe6-47cd-8a7b-9e7cc46a4ca8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="appearance\KCF">
+      <UniqueIdentifier>{8b8f71c8-b6b8-481d-a4d6-c7e31af11ee0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hungarian">
+      <UniqueIdentifier>{ddfae3d8-a9de-4fb6-b623-d0d98698b40a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils\rle">
+      <UniqueIdentifier>{e50f493a-8e76-403d-8104-e4a353be9301}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="io_mots.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="drawing.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="mask_api.h">
+      <Filter>utils\rle</Filter>
+    </ClInclude>
+    <ClInclude Include="GMPHD_MAF.h">
+      <Filter>trackers</Filter>
+    </ClInclude>
+    <ClInclude Include="hungarian.h">
+      <Filter>Hungarian</Filter>
+    </ClInclude>
+    <ClInclude Include="VOT.h">
+      <Filter>appearance</Filter>
+    </ClInclude>
+    <ClInclude Include="ffttools.hpp">
+      <Filter>appearance\KCF</Filter>
+    </ClInclude>
+    <ClInclude Include="fhog.hpp">
+      <Filter>appearance\KCF</Filter>
+    </ClInclude>
+    <ClInclude Include="kcftracker.hpp">
+      <Filter>appearance\KCF</Filter>
+    </ClInclude>
+    <ClInclude Include="labdata.hpp">
+      <Filter>appearance\KCF</Filter>
+    </ClInclude>
+    <ClInclude Include="recttools.hpp">
+      <Filter>appearance\KCF</Filter>
+    </ClInclude>
+    <ClInclude Include="OnlineTracker.h">
+      <Filter>trackers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="demo_GMPHD_MAF.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="io_mots.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="drawing.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="mask_api.cpp">
+      <Filter>utils\rle</Filter>
+    </ClCompile>
+    <ClCompile Include="OnlineTracker.cpp">
+      <Filter>trackers</Filter>
+    </ClCompile>
+    <ClCompile Include="GMPHD_MAF.cpp">
+      <Filter>trackers</Filter>
+    </ClCompile>
+    <ClCompile Include="hungarian.cpp">
+      <Filter>Hungarian</Filter>
+    </ClCompile>
+    <ClCompile Include="fhog.cpp">
+      <Filter>appearance\KCF</Filter>
+    </ClCompile>
+    <ClCompile Include="kcftracker.cpp">
+      <Filter>appearance\KCF</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
