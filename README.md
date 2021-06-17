@@ -33,7 +33,47 @@ were used to implement the GMPHD_MAF tracker.
 ## Project Source
 ### File Tree
 ```
+PROJECT_HOME
+├── GMPHD_MAF.sln  <-- **solution file for the project**
+└── GMPHD_MAF      
+    ├── demo_GMPHD_MAF.cpp                            <-- **the main function** including demos.
+    ├── OnlineTracker.h, OnlineTracker.cpp            <-- the parent class of GMPHD_MAF
+    ├── GMPHD_MAF.h, GMPHD_MAF.cpp                    <-- *a class implementation of the GMPHD_MAF tracker* inherited from OnlineTracker class
+    ├── kcftracker.hpp&cpp, VOT.h, ffttols.hpp, fhog.hpp&cpp, labdata.hpp, recttols.hpp <-- a C++ code set of KCF [2] implementaion
+    ├── utils.hpp                                     <-- a header file including essential containers and preprocessors for GMPHD_MAF
+    ├── io_mots.hpp&cpp, mask_api.h&cpp               <-- read/write functions for MOTS data format (e.g., run-length encoding)
+    ├── drawing.hpp, drawing.cpp                      <-- drawing functions for MOTS results visualization
+    ├── hungarian.h, hungarian.cpp                    <-- a class implementation of the Hungarian Algorithm 
+    ├── pch.h                                         <-- precompiled header including essential header files
+    ├── GMPHD_MAF.vcxproj, GMPHD_MAF.vcxproj.filters  <-- VS project file, VS project filter file
+    ├── params                                        <-- text files containing scene parameters
+    |   └── KITTI_test.txt, KITTI_train.txt, MOTS20_test.txt, MOTS20_train.txt
+    ├── seq                                           <-- text files containing dataset paths and sequences' names
+    |   └── KITTI_test.txt, KITTI_train.txt, MOTS20_test.txt, MOTS20_train.txt
+    ├── img                                           <-- MOTS results are saved in {seqname}/*.jpg
+    |   ├── KITTI
+    |   |   └── test, train                           
+    |   └── MOTS20
+    |       └── test, train 
+    └── res                                           <-- MOTS results are saved in {seqname}.txt
+        ├── KITTI
+        |   └── test, train 
+        └── MOTS20
+            └── test, train 
 ```
+
+C++ implementation of the Hungarian Algorithm : 
+`
+hungarian.h, hungarian.cpp 
+`
+, refering to [#mcximing/hungarian-algorithm-cpp](https://github.com/mcximing/hungarian-algorithm-cpp) <br> 
+
+C++ implementaion of KCF [2] :
+`
+kcftracker.hpp&cpp, VOT.h, ffttols.hpp, fhog.hpp&cpp, labdata.hpp, recttols.hpp
+`
+, refering to [#joaofaro/KCFcpp](https://github.com/joaofaro/KCFcpp) <br> 
+
 ## How to run
 1. Open the solution file **GMPHD_MAF.sln**.
 2. Link and include **OpenCV3.4.1** and **boost1.74.0** libraries to the project w/ VC15_x64.
