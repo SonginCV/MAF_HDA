@@ -4,8 +4,8 @@ This repository includes an implementation of the GMPHD_MAF tracker in C/C++ wit
 
 ## Progress
 
-+ **_[2021.06.00] Writing this README.md now..._** <br>
-+ [2021.06.17] First full upload of a C/C++ implementation in VS2017 project (with VC15), **_v0.2.0_**. <br>
++ [2021.06.18] README.md released <br>
++ [2021.06.17] First full upload of a C/C++ implementation in VS2017 project (with VC15), **_v0.2.0_** <br>
 + [2021.06.11] Full manuscript upload in **_arXiv_**
 
 ## Paper 
