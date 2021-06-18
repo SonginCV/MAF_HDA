@@ -17,14 +17,14 @@ and [[arxiv](https://arxiv.org/abs/2009.00100)]. <br>
 
 # II. User guide
 
-## Development Environment
+## Development environment
 + Windows 10  (64 bit) <br>
 + Visual Studio 2017  (64 bit)
 
 ### Programming languages
 + Visual C/C++ (VC15)
 
-### Libaries
+### Libraries
 [OpenCV 3.4.1](https://www.opencv.org/opencv-3-4-1.html) and 
 [boost 1.74.0 (Windows Binaries)](https://sourceforge.net/projects/boost/files/boost-binaries/1.74.0/) 
 were used to implement the GMPHD_MAF tracker.
@@ -66,19 +66,19 @@ C++ implementation of the Hungarian Algorithm :
 `
 hungarian.h, hungarian.cpp 
 `
-, refering to [#mcximing/hungarian-algorithm-cpp](https://github.com/mcximing/hungarian-algorithm-cpp) <br> 
+,<br> refering to [#mcximing/hungarian-algorithm-cpp](https://github.com/mcximing/hungarian-algorithm-cpp) <br> 
 
 C++ implementaion of KCF [2] :
 `
 kcftracker.hpp&cpp, VOT.h, ffttols.hpp, fhog.hpp&cpp, labdata.hpp, recttols.hpp
 `
-, refering to [#joaofaro/KCFcpp](https://github.com/joaofaro/KCFcpp) <br> 
+,<br> refering to [#joaofaro/KCFcpp](https://github.com/joaofaro/KCFcpp) <br> 
 
 ## How to run
 1. Open the solution file **GMPHD_MAF.sln**.
 2. Link and include **OpenCV3.4.1** and **boost1.74.0** libraries to the project w/ VC15_x64.
 3. Press Ctrl+F5 in **Release mode (x64)**
-+ We provide two MOTS processing modes. One is "1: a single scene" and the other is "2: a set of scenes".
++ We provide two MOTS processing options. One is "1: a single scene" and the other is "2: a set of scenes".
 
 ## Input
 #### 1. Images and public instance segmentation results
@@ -177,6 +177,6 @@ KITTI-MOTS w/ sMOTSA measure [[link](http://www.cvlibs.net/datasets/kitti/eval_m
   [{O}nline]. Available: ar{X}iv:2009.00100.
 ```
 
-## IV. [License](https://github.com/SonginCV/GMPHD_MAF/blob/master/LICENSE)
-BSD 2-Clause "Simplified" License
+# IV. [License](https://github.com/SonginCV/GMPHD_MAF/blob/master/LICENSE)
+### BSD 2-Clause "Simplified" License
 
