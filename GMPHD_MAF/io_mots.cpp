@@ -312,8 +312,8 @@ VECx2xBBDet ReadDetectionsSeq(const int& DB_TYPE, const string& detNAME, const s
 					detsSeq_out.push_back(detsFrmAll);
 					detsFrmAll.clear();
 
-					// Frame ¿¡ ¾Æ¹« °´Ã¼°¡ ¾ø¾îµµ µé¾î°¡¾ß ÇÑ´Ù
-					// index = frame ÀÌ¶ó
+					// Frame ì— ì•„ë¬´ ê°ì²´ê°€ ì—†ì–´ë„ ë“¤ì–´ê°€ì•¼ í•œë‹¤
+					// index = frame ì´ë¼
 					carDets.push_back(detsFrmCar);
 					detsFrmCar.clear();
 
@@ -483,8 +483,8 @@ VECx2xBBTrk ReadTracksSeq(const int& DB_TYPE, const string& trkNAME, const strin
 					trksSeq_out.push_back(trksFrmAll);
 					trksFrmAll.clear();
 
-					// Frame ¿¡ ¾Æ¹« °´Ã¼°¡ ¾ø¾îµµ µé¾î°¡¾ß ÇÑ´Ù
-					// index = frame ÀÌ¶ó
+					// Frame ì— ì•„ë¬´ ê°ì²´ê°€ ì—†ì–´ë„ ë“¤ì–´ê°€ì•¼ í•œë‹¤
+					// index = frame ì´ë¼
 					//carTrks.push_back(trksFrmCar);
 					//trksFrmCar.clear();
 
@@ -617,11 +617,11 @@ void SaveResultImgs(const int& DB_TYPE, const string& MODE, const string& detNAM
 		//sprintf_s(filePathINTP, 256, "res\\MOT17\\%s\\_speed.txt", MODE);
 	}
 	else if (DB_TYPE == DB_TYPE_KITTI || DB_TYPE == DB_TYPE_KITTI_MOTS) {
-		sprintf_s(folderPath, 256, "img\\KITTI\\%s\\%s\\%s", MODE.c_str(), detNAME.c_str(), seqNAME.c_str());
+		sprintf_s(folderPath, 256, "img\\KITTI\\%s\\%s", MODE.c_str(), seqNAME.c_str());
 		//sprintf_s(filePathINTP, 256, "res\\KITTI\\%s\\%s\\%s_intp\\_speed.txt", MODE, detNAME, strThDetConf);
 	}
 	else if (DB_TYPE == DB_TYPE_MOTS20) {
-		sprintf_s(folderPath, 256, "img\\MOTS20\\%s\\%s\\%s", MODE.c_str(), detNAME.c_str(), seqNAME.c_str());
+		sprintf_s(folderPath, 256, "img\\MOTS20\\%s\\%s", MODE.c_str(), seqNAME.c_str());
 		//sprintf_s(filePathINTP, 256, "res\\MOTSChallenge\\%s\\%s\\%s_intp\\_speed.txt", MODE, detNAME, strThDetConf);
 	}
 
@@ -694,7 +694,7 @@ std::string CvtMAT2RleSTR(const cv::Mat& in_maskMAT, const cv::Size& in_frmImgSz
 	cv::Mat maskMATinFrm(frmH, frmW, CV_8UC1, cv::Scalar(0));
 	byte *mask = new byte[frmW*frmH * 1];
 	RLE maskRLE;
-	// ¾Æ´Ï.. ¿Ö ÀÌ·¸°Ô Â®Áö.. ÀÌ·³ Á¶±İÀÌ¶óµµ ¹ÛÀ¸·Î ³ª°¡¸é ±×³É 0ÀÌ Àİ¾Æ
+	// ì•„ë‹ˆ.. ì™œ ì´ë ‡ê²Œ ì§°ì§€.. ì´ëŸ¼ ì¡°ê¸ˆì´ë¼ë„ ë°–ìœ¼ë¡œ ë‚˜ê°€ë©´ ê·¸ëƒ¥ 0ì´ ì–ì•„
 	if (viewDetail) printf("(1)");
 	if (bbox.width <= 0 || bbox.height <= 0)
 	{
@@ -735,7 +735,7 @@ void CvtRleSTR2MAT(const std::string &in_maskRleSTR, const cv::Size& in_segImgSz
 	//string rleStrUTF8 = boost::locale::conv::utf_to_utf<char>(rleStr);
 	//cout << rleStr << endl;
 	//cout << rleStrUTF8 << endl;
-	//cout << relStr_w << endl; // "¸¦ ÀÎ½ÄÇÏ³×, ¾îÂ·µç ¾ÈµÊ
+	//cout << relStr_w << endl; // "ë¥¼ ì¸ì‹í•˜ë„¤, ì–´ì¨Œë“  ì•ˆë¨
 
 	RLE rleTemp;
 	siz segImgW = (siz)in_segImgSz.width; siz segImgH = (siz)in_segImgSz.height;
