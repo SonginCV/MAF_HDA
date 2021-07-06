@@ -304,8 +304,8 @@ void RunMOTSequence(const int& sq, const string& seqName, const string& seqPath,
 			cv::Mat imgDetResized, imgTrkResized;
 			string winTitle[2] = { "Detection", "Tracking" };
 			cv::Size viewSize(frmWidth, frmHeight);
-			cv::namedWindow(winTitle[0]);	cv::namedWindow(winTitle[1]);
-			if (!iFrmCnt) {
+			if (VISUALIZATION_MAIN_ON && !iFrmCnt) {
+				cv::namedWindow(winTitle[0]);	cv::namedWindow(winTitle[1]);
 				cv::moveWindow(winTitle[0], 0, 0);
 				cv::moveWindow(winTitle[1], 0, viewSize.height + 20);
 			}
@@ -325,16 +325,16 @@ void RunMOTSequence(const int& sq, const string& seqName, const string& seqPath,
 
 			DrawFrameNumberAndFPS(iFrmCnt, visDet, 2.0, 2, sym::FRAME_OFFSETS[DB_TYPE], 1, secs);
 			DrawFrameNumberAndFPS(iFrmCnt- MOTSParallel[TARGET_OBJ]->GetParams().FRAMES_DELAY_SIZE, visTrk, 2.0, 2, sym::FRAME_OFFSETS[DB_TYPE], 1, secs);
-
-			if (!SAVE_IMG_ON) {
-				// Displaying
+		
+			// Displaying
+			if (VISUALIZATION_MAIN_ON) {
 				cv::imshow(winTitle[0], visDet);
 				cv::imshow(winTitle[1], visTrk);
 
 				if (SKIP_FRAME_BY_FRAME)	cv::waitKey();
-				else						cv::waitKey(10);
+				else				cv::waitKey(10);
 			}
-			else {
+			if (SAVE_IMG_ON) {
 				SaveResultImgs(DB_TYPE, MODE, DETECTOR, seqName, iFrmCnt + sym::FRAME_OFFSETS[DB_TYPE], visDet, MOTSParallel[TARGET_OBJ]->GetParams().DET_MIN_CONF, "det");
 				SaveResultImgs(DB_TYPE, MODE, DETECTOR, seqName, iFrmCnt + sym::FRAME_OFFSETS[DB_TYPE], visTrk, MOTSParallel[TARGET_OBJ]->GetParams().DET_MIN_CONF, "trk");
 			}
