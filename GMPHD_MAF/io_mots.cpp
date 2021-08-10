@@ -116,9 +116,9 @@ void ReadDatasetInfo(const int& DB_TYPE, const string& MODE, const string& detNA
 			std::transform(cls_tmp.begin(), cls_tmp.end(), cls_tmp.begin(), std::tolower);
 
 			int obj_type;
-			if (cls_tmp.compare("car"))		obj_type = 1;// sym::OBJECT_TYPE::CAR;
-			else if (cls_tmp.compare("ped"))obj_type = 2;// sym::OBJECT_TYPE::PEDESTRIAN;
-			else							obj_type = sym::OBJECT_TYPE::MISC;
+			if (!cls_tmp.compare("car"))		obj_type = 1;// sym::OBJECT_TYPE::CAR;
+			else if (!cls_tmp.compare("ped"))	obj_type = 2;// sym::OBJECT_TYPE::PEDESTRIAN;
+			else					obj_type = sym::OBJECT_TYPE::MISC;
 			//cout << cls_tmp <<endl;
 			vector<float> params;
 
