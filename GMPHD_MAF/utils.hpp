@@ -56,37 +56,37 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //#include "siamRPN_tracker.hpp"
 //#include "DaSiamTracker.h"
 
-#define MAX_OBJECTS				27	
+#define MAX_OBJECTS	27	
 
 #define SIZE_CONSTRAINT_RATIO	2
 
 // Parameters for the GMPHD filter
-#define PI_8					3.14159265
-#define e_8						2.71828182
-#define T_th					(0.0)
-#define W_th					(0.0)
-#define Q_TH_LOW_20				0.00000000000000000001f		// 0.1^20
+#define PI_8				3.14159265
+#define e_8				2.71828182
+#define T_th				(0.0)
+#define W_th				(0.0)
+#define Q_TH_LOW_20			0.00000000000000000001f		// 0.1^20
 #define Q_TH_LOW_20_INVERSE		100000000000000000000.0f	// 10^20
-#define Q_TH_LOW_15				0.00000000000001f			// 0.1^15
-#define Q_TH_LOW_15_INVERSE		1000000000000000.0f			// 10^15
-#define Q_TH_LOW_10				0.0000000001f				// 0.1^10
-#define Q_TH_LOW_10_INVERSE		10000000000.0f				// 10^10
-#define Q_TH_LOW_8				0.00000001f					// 0.1^8
-#define Q_TH_LOW_8_INVERSE		100000000.0f				// 10^8
-#define P_SURVIVE_LOW			0.99						// object number >=2 : 0.99, else 0.95
+#define Q_TH_LOW_15			0.00000000000001f		// 0.1^15
+#define Q_TH_LOW_15_INVERSE		1000000000000000.0f		// 10^15
+#define Q_TH_LOW_10			0.0000000001f			// 0.1^10
+#define Q_TH_LOW_10_INVERSE		10000000000.0f			// 10^10
+#define Q_TH_LOW_8			0.00000001f			// 0.1^8
+#define Q_TH_LOW_8_INVERSE		100000000.0f			// 10^8
+#define P_SURVIVE_LOW			0.99				// object number >=2 : 0.99, else 0.95
 #define P_SURVIVE_MID			0.95
-#define VAR_X					25 //42.96 // 279.13 // 1116.520// 0.1 //25 // 171.87
-#define VAR_Y					100//29.27// 47.685 // 190.740 //0.1 //100 // 117.09
-#define VAR_D					25//0.1 //25
-#define VAR_R					0.09 // 0.1, 0.04, 0.01
-#define VAR_X_VEL				25// 42.96 // 279.13 // 1116.520// 0.1 //25 // 171.871
-#define VAR_Y_VEL				100// 29.27//47.685 // 190.740//0.1//100 // 117.090
-#define VAR_D_VEL				25//0.1 // 25	// 1, 4, 9, 16, 25, 100, 225, 400, 900
-#define VAR_R_VEL				100 // 0.1, 0.04, 0.01
-#define VAR_WIDTH				100
-#define VAR_HEIGHT				400
-#define VAR_X_MID				100
-#define VAR_Y_MID				400
+#define VAR_X				25 //42.96 // 279.13 // 1116.520// 0.1 //25 // 171.87
+#define VAR_Y				100//29.27// 47.685 // 190.740 //0.1 //100 // 117.09
+#define VAR_D				25//0.1 //25
+#define VAR_R				0.09 // 0.1, 0.04, 0.01
+#define VAR_X_VEL			25// 42.96 // 279.13 // 1116.520// 0.1 //25 // 171.871
+#define VAR_Y_VEL			100// 29.27//47.685 // 190.740//0.1//100 // 117.090
+#define VAR_D_VEL			25//0.1 // 25	// 1, 4, 9, 16, 25, 100, 225, 400, 900
+#define VAR_R_VEL			100 // 0.1, 0.04, 0.01
+#define VAR_WIDTH			100
+#define VAR_HEIGHT			400
+#define VAR_X_MID			100
+#define VAR_Y_MID			400
 #define VAR_X_VEL_MID			100
 #define VAR_Y_VEL_MID			400
 
@@ -100,33 +100,33 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define AFFINITY_COST_L1_OR_L2_NORM_FW		1	// 0: L1-norm, 1: L2-norm, frame-wise
 #define AFFINITY_COST_L1_OR_L2_NORM_TW		1	// 0: L1-norm, 1: L2-norm, tracklet-wise
 // SOT Tracker Options
-#define SOT_USE_KCF_TRACKER					1
-#define SOT_USE_SIAMRPN_TRACKER				2
-#define SOT_USE_DASIAMRPN_TRACKER			3
-#define SOT_TRACK_OPT						SOT_USE_KCF_TRACKER
+#define SOT_USE_KCF_TRACKER			1
+#define SOT_USE_SIAMRPN_TRACKER			2
+#define SOT_USE_DASIAMRPN_TRACKER		3
+#define SOT_TRACK_OPT				SOT_USE_KCF_TRACKER
 
 // (D2TA) GMPHD-KCF Fusion (D2TA)
-#define APPEARANCE_STRICT_UPDATE_ON			0
-#define APPEARANCE_UPDATE_DET_TH			0.85f
+#define APPEARANCE_STRICT_UPDATE_ON		0
+#define APPEARANCE_UPDATE_DET_TH		0.85f
 
 // (T2TA) GMPHD-KCF Fusion (T2TA)
-//#define SAF_MASK_T2TA_ON					1
+//#define SAF_MASK_T2TA_ON			1
 
-// #define KCF_SOT_T2TA_ON					0
-//#define IOU_UPPER_TH_T2TA_ON				1
+// #define KCF_SOT_T2TA_ON			0
+//#define IOU_UPPER_TH_T2TA_ON			1
 
 // MOTS
-#define COV_UPDATE_T2TA						0
+#define COV_UPDATE_T2TA				0
 
-#define USE_LINEAR_MOTION					0
-#define USE_KALMAN_MOTION					1
-#define T2TA_MOTION_OPT						USE_LINEAR_MOTION			
-#define KALMAN_INIT_BY_LINEAR				1
+#define USE_LINEAR_MOTION			0
+#define USE_KALMAN_MOTION			1
+#define T2TA_MOTION_OPT				USE_LINEAR_MOTION			
+#define KALMAN_INIT_BY_LINEAR			1
 
 // Parameters for Occlusion Group Management (Merge and Occlusion Group Energy Minimization)
 #define MERGE_DET_ON			1
 #define MERGE_TRACK_ON			1
-#define MERGE_METRIC_OPT		2		// 0: SIOA, 1:IOU, 2:sIOU
+#define MERGE_METRIC_OPT		2	// 0: SIOA, 1:IOU, 2:sIOU
 #define MERGE_THRESHOLD_RATIO	0.4f
 #define MERGE_METRIC_SIOA		0
 #define MERGE_METRIC_IOU		1
@@ -142,31 +142,31 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define EXCLUDE_BBOX_OUT_OF_FRAME	0
 
 // Visualization Option (main function)
-#define VISUALIZATION_MAIN_ON				1
-#define SKIP_FRAME_BY_FRAME					0
-#define VISUALIZATION_RESIZE_ON				0
-#define BOUNDING_BOX_THICK					5
-#define TRAJECTORY_THICK					5
-#define	ID_CONFIDENCE_FONT_SIZE				2
-#define	ID_CONFIDENCE_FONT_THICK			2
-#define FRAME_COUNT_FONT_SIZE				3
-#define FRAME_COUNT_FONT_THICK				3
+#define VISUALIZATION_MAIN_ON		1
+#define SKIP_FRAME_BY_FRAME		0
+#define VISUALIZATION_RESIZE_ON		0
+#define BOUNDING_BOX_THICK		5
+#define TRAJECTORY_THICK		5
+#define	ID_CONFIDENCE_FONT_SIZE		2
+#define	ID_CONFIDENCE_FONT_THICK	2
+#define FRAME_COUNT_FONT_SIZE		3
+#define FRAME_COUNT_FONT_THICK		3
 // Visualization Option (tracker class)
-#define VIS_D2TA_DETAIL						0
-#define VIS_T2TA_DETAIL						0
-#define VIS_TRACK_MERGE						0
+#define VIS_D2TA_DETAIL			0
+#define VIS_T2TA_DETAIL			0
+#define VIS_TRACK_MERGE			0
 
 // Image Save Option (main function)
-#define SAVE_IMG_ON							0
+#define SAVE_IMG_ON			0
 
 // Dataset Indices
 #define DB_TYPE_MOT15			0	// MOT Challenge 2015 Dataset (-1)
 #define DB_TYPE_MOT17			1	// MOT Challenge 2017 Dataset
-#define DB_TYPE_CVPR19			2   // MOT Challenge 2019 (CVPR 2019) Dataset
-#define DB_TYPE_MOT20			2   // MOT Challenge 2020
-#define DB_TYPE_KITTI			3	// KITTI			(2D box, 3D box, 3D Point Cloud)
-#define DB_TYPE_KITTI_MOTS		4	// KITTI-MOTS		(2D Instance Segment)
-#define DB_TYPE_MOTS20			5	// MOTS20			(2D Instacne Segment)
+#define DB_TYPE_CVPR19			2   	// MOT Challenge 2019 (CVPR 2019) Dataset
+#define DB_TYPE_MOT20			2   	// MOT Challenge 2020
+#define DB_TYPE_KITTI			3	// KITTI 	(2D box, 3D box, 3D Point Cloud)
+#define DB_TYPE_KITTI_MOTS		4	// KITTI-MOTS 	(2D Instance Segment)
+#define DB_TYPE_MOTS20			5	// MOTS20	(2D Instacne Segment)
 
 #define DEBUG_PRINT			0
 
@@ -499,13 +499,13 @@ typedef struct bbDet {
 	}
 }BBDet;
 
-// ÇÔ¼öÀÇ Á¤ÀÇ, º¯¼öÀÇ ÃÊ±âÈ­¸¦ header ÆÄÀÏ¿¡¼­ ÇÏ¸é¼­
-// ´Ù¸¥ ÆÄÀÏ(¼Ò½º)¿¡¼­ ÇØ´ç ÇÔ¼ö, º¯¼ö¸¦ °¡Á®´Ù ¾²°í ½ÍÀ¸¸é static ¹Û¿¡´Â ¹æ¹ıÀÌ ¾ø´Ù.
-// ¾Æ´Ï¸é, ¼±¾ğÀº Çì´õÆÄÀÏ, Á¤ÀÇ ¹× ÃÊ±âÈ­´Â cpp ¿¡¼­ ÇÑµÚ
-// extern Å°¿öµå¸¦ ¾²¸éµÈ´Ù.
-// https://zerobell.tistory.com/22 Âü°í
-// ¾îÂ¥ÇÇ °ªÀÇ º¯µ¿ÀÌ ¾øÀ» ¶§´Â staticÀ¸·Î ÇÏ´Â°Ô Á¦ÀÏ ÆíÇÏ´Ù
-// ÇÔ¼ö´Â ÀÚµ¿À¸·Î extern ÀÌ »ı·«µÇ¾îÀÖ´Ù. (ÆÄÀÏ ³» Àü¿ª º¯¼öµµ ¸¶Âù°¡Áö)
+// í•¨ìˆ˜ì˜ ì •ì˜, ë³€ìˆ˜ì˜ ì´ˆê¸°í™”ë¥¼ header íŒŒì¼ì—ì„œ í•˜ë©´ì„œ
+// ë‹¤ë¥¸ íŒŒì¼(ì†ŒìŠ¤)ì—ì„œ í•´ë‹¹ í•¨ìˆ˜, ë³€ìˆ˜ë¥¼ ê°€ì ¸ë‹¤ ì“°ê³  ì‹¶ìœ¼ë©´ static ë°–ì—ëŠ” ë°©ë²•ì´ ì—†ë‹¤.
+// ì•„ë‹ˆë©´, ì„ ì–¸ì€ í—¤ë”íŒŒì¼, ì •ì˜ ë° ì´ˆê¸°í™”ëŠ” cpp ì—ì„œ í•œë’¤
+// extern í‚¤ì›Œë“œë¥¼ ì“°ë©´ëœë‹¤.
+// https://zerobell.tistory.com/22 ì°¸ê³ 
+// ì–´ì§œí”¼ ê°’ì˜ ë³€ë™ì´ ì—†ì„ ë•ŒëŠ” staticìœ¼ë¡œ í•˜ëŠ”ê²Œ ì œì¼ í¸í•˜ë‹¤
+// í•¨ìˆ˜ëŠ” ìë™ìœ¼ë¡œ extern ì´ ìƒëµë˜ì–´ìˆë‹¤. (íŒŒì¼ ë‚´ ì „ì—­ ë³€ìˆ˜ë„ ë§ˆì°¬ê°€ì§€)
 
 namespace sym {
 	static enum MODEL_VECTOR {
@@ -602,7 +602,7 @@ typedef struct MOTparams {
 
 	MOTparams() {
 	}
-	MOTparams(int obj_type, double dConf_th, int trk_min, int t2ta_max, int mg_metric, float mg_th, float vel_alpha, int group_q_size, int frames_offset,
+	MOTparams(int obj_type, float dConf_th, int trk_min, int t2ta_max, int mg_metric, float mg_th, float vel_alpha, int group_q_size, int frames_offset,
 		int saf_d2ta = 2, int saf_t2ta = 2, bool mask_d2ta = true, bool mask_t2ta = true,
 		const cv::Vec2f& kcf_bounds_d2ta = cv::Vec2f(0.5, 0.9), const cv::Vec2f& kcf_bounds_t2ta = cv::Vec2f(0.5, 0.9),
 		const cv::Vec2f& iou_bounds_d2ta = cv::Vec2f(0.1, 0.9), const cv::Vec2f& iou_bounds_t2ta = cv::Vec2f(0.1, 0.9),
