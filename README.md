@@ -1,5 +1,5 @@
 # I. Introduction
-## Online Multi-Object Tracking and Segmentation <br> with GMPHD Filter and Mask-based Affinity Fusion (GMPHD_MAF)
+## Online Multi-Object Tracking and Segmentation <br> with Embedding Mask-based Affinity Fusion in Hierachical Data Association (MAF_HDA)
 This repository includes an implementation of the GMPHD_MAF tracker in C/C++ with a demo code and supplementary materials.
 
 ## Progress
