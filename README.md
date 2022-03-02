@@ -154,7 +154,7 @@ The results are available in
 CVPR 2020 MOTSChallenge [[link](https://motchallenge.net/results/CVPR_2020_MOTS_Challenge/)], 
 MOTS20 [[link](https://motchallenge.net/results/MOTS/)],
 
-KITTI-MOTS w/ sMOTSA measure [[link](http://www.cvlibs.net/datasets/kitti/eval_mots.php)] and w/ HOTA measure [[link](http://www.cvlibs.net/datasets/kitti/eval_mots.php)].
+KITTI-MOTS w/ sMOTSA measure [[link](http://www.cvlibs.net/datasets/kitti/old_eval_mots.php)] and w/ HOTA measure [[link](http://www.cvlibs.net/datasets/kitti/eval_mots.php)].
 
 # III. References
 
